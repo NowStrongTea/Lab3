@@ -6,17 +6,17 @@ int main() {
     char ABC[50] = { 'a','b','c','d','e','f','g','h','i','j','k','l',
                      'm','n','o','p','q','r','s','t','u','v','w','x','y','z',
                      '0','1','2','3','4','5','6','7','8','9', ' ' };
-    // Sozdali massiv s dostupnymi dlya shifrovki znacheniyami
-    char msg[1000]; // Massiv dlya hraneniya soobshcheniya pol'zovatelya
-    int shift; // Hranit chislo, na kotoroe nuzhno sdvinut' soobshchenie
+    // created an array with valid values for encryption
+    char msg[1000]; // array for storing the message
+    int shift; // stores the shift key
     int index;
     int j = 0;
     VVOD:
-    cout << "Vvedite soobshchenie, kotoroe hotite zakodirovat': " << endl;
-    cout << "Na vvod prinimayutsya strochnye latinskiye bukvy, cifry 0-9" << endl;
+    cout << "enter the message you want to encode': " << endl;
+    cout << "lowercase Latin letters and numbers from 0-9 are accepted for input" << endl;
     cout << endl;
-    cin.get(msg, 1000); //Vvodim v massiv msg pol'zovatel'skoe soobshchenie
-    for (int i = 0; i < 1000; i++) {    // Proverka na registr
+    cin.get(msg, 1000); //we enter a message into the msg array
+    for (int i = 0; i < 1000; i++) {    // checking for a register
         int aa;
         aa = isupper(msg[i]);
         cout << aa;
@@ -26,13 +26,13 @@ int main() {
         }
     }
     SDVIG:
-    cout << "Vvedite sdvig dlya shifrovki: ";   // Pol'zovatel' vvodit sdvig dlya shifra
+    cout << "you need to enter in lowercase: ";   // the user enters the key for the cipher
     cin >> shift;
     int choise;
     SHIFRDESHIFR:
-    cout << "Esli hotite zashifrovat' frazu - vvedite 1, esli deshifrovat' - vvedite 2: " << endl; // Pol'zovatel' vybiraet zashifrovat' ili deshifrovat' soobshchenie
+    cout << "if you want to encrypt enter 1 if you want to decrypt enter 2: " << endl; // Pol'zovatel' vybiraet zashifrovat' ili deshifrovat' soobshchenie
     cin >> choise;
-    if (choise == 1) {  // Srabotaet, esli pol'zovatel' vybral zashifrovat' soobshchenie
+    if (choise == 1) {
 
         for (int i = 0; i < strlen(msg); i++) {
             if (msg[i] != ' ') {
@@ -54,7 +54,7 @@ int main() {
         }
         cout << msg << endl;
     }
-    else if (choise == 2) {  // Srabotaet, esli pol'zovatel' vybral deshifrovat' soobshchenie
+    else if (choise == 2) {
         for (int i = 0; i < strlen(msg); i++) {
             if (msg[i] != ' ') {
                 while (msg[i] != ABC[j]) {
@@ -71,7 +71,7 @@ int main() {
         cout << msg << endl;
     }
     else {
-        cout << "Nuzhno vvesti ili 1 ili 2!" << endl;
+        cout << "need to enter in 1 or 2" << endl;
         goto SHIFRDESHIFR;
     }
 
